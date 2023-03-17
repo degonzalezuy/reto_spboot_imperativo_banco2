@@ -41,4 +41,12 @@ public class CuentasController {
 
         return ResponseEntity.ok().body(cuenta1);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarCuenta(@PathVariable Long id){
+        Cuenta cuenta1 = service.eliminarCuenta(id);
+
+        return ResponseEntity.ok().body("Cuenta eliminada");
+    }
+
 }

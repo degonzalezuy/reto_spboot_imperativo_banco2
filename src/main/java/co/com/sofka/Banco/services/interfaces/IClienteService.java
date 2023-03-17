@@ -8,7 +8,7 @@ public interface IClienteService {
     public interface ICliente {
         public Optional<Cliente> buscarClientePorId(Long id);
         public Cliente guardarCliente(Cliente cliente);
-        public Cliente eliminarCliente(Long id);
+        public void eliminarCliente(Long id);
         public Optional<Cliente> modificarCliente(Cliente cliente, Long id);
 
     }

@@ -68,13 +68,19 @@ public class MovimientoService implements IMovimientoService {
     }
 
     @Override
-    public Movimiento modificarMovimiento(Movimiento movimiento, Long id) {
-        return null;
+    public Optional<Movimiento> modificarMovimiento(Movimiento movimiento, Long id)
+    {
+        return movimientoRepository.findById(id).map(movimiento1 -> {
+            movimiento1.setTipoMovimiento(movimiento.getTipoMovimiento());
+            movimiento1.setSaldo(movimiento.getSaldo());
+            movimiento1.setCuenta(movimiento.getCuenta());
+            movimiento1.setFecha(movimiento.getFecha());
+            movimiento1.setValor(movimiento.getValor());
+
+
+            return movimientoRepository.save(movimiento1);
+        });
+
     }
 
-
-    /*public float getSaldoCuenta(Long idCuenta){
-        Optional<Cuenta> cuenta = cuentaService.buscarCuentaPorId(idCuenta);
-        return cuenta.get().getSaldo();
-    }*/
 }

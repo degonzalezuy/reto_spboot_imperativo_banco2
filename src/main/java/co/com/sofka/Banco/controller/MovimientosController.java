@@ -38,8 +38,8 @@ public class MovimientosController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Movimiento> actualizarMovimiento(@RequestBody Movimiento movimiento, @PathVariable Long id){
-        Movimiento movimiento1 = service.modificarMovimiento(movimiento, id);
+    public ResponseEntity<Optional<Movimiento>> actualizarMovimiento(@RequestBody Movimiento movimiento, @PathVariable Long id){
+        Optional<Movimiento> movimiento1 = service.modificarMovimiento(movimiento, id);
 
         return ResponseEntity.ok().body(movimiento1);
     }
@@ -48,7 +48,7 @@ public class MovimientosController {
     public ResponseEntity<String> eliminarMovimiento(@PathVariable Long id){
         Movimiento movimiento1 = service.eliminarMovimiento(id);
 
-        return ResponseEntity.ok().body("Cuenta eliminada");
+        return ResponseEntity.ok().body("Movimiento eliminada");
     }
 
 }

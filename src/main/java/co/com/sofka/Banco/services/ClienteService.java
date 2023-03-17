@@ -35,9 +35,9 @@ public class ClienteService implements IClienteService.ICliente {
     }
 
     @Override
-    public Cliente eliminarCliente(Long id) {
+    public void eliminarCliente(Long id) {
         clienteRepository.deleteById(id);
-        return null;
+
     }
 
     @Override

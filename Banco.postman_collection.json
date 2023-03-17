@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "a00b7e98-95f5-46b6-9ade-edf18ed1492f",
+		"name": "Banco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cuentas",
+			"item": [
+				{
+					"name": "Cuenta-Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/cuentas"
+					},
+					"response": []
+				},
+				{
+					"name": "Cuenta-Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jose Lema\",\r\n    \"genero\":\"M\",\r\n    \"edad\":\"35\",\r\n    \"documento\":\"40429767\",\r\n    \"direccion\":\"Otavalo sn y principal\",\r\n    \"telefono\":\"098254785\",\r\n    \"contrasena\":\"1234\",\r\n    \"estado\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Cuenta-Put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{       \"numero\": 456789,\r\n        \"tipoCuenta\": \"Cta Corriente\",\r\n        \"saldo\": 5000.0,\r\n        \"estado\": true,\r\n        \"cliente\":  {\"idCliente\":3}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/cuentas/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Cuenta-Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/cuentas/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Cliente-Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jose Lema\",\r\n    \"genero\":\"M\",\r\n    \"edad\":\"35\",\r\n    \"documento\":\"40429767\",\r\n    \"direccion\":\"Otavalo sn y principal\",\r\n    \"telefono\":\"098254785\",\r\n    \"contrasena\":\"1234\",\r\n    \"estado\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente-Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jose Lema\",\r\n    \"genero\":\"M\",\r\n    \"edad\":\"35\",\r\n    \"documento\":\"40429767\",\r\n    \"direccion\":\"Otavalo sn y principal\",\r\n    \"telefono\":\"098254785\",\r\n    \"contrasena\":\"1234\",\r\n    \"estado\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/clientes/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente-Get",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente-Put",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"Pepe Mujica\",\r\n        \"edad\": 55,\r\n        \"documento\": 987654,\r\n        \"direccion\": \"Cerro Mvd\",\r\n        \"telefono\": \"099609609\",\r\n        \"contrasena\": \"1234\",\r\n        \"estado\": false,\r\n        \"genero\": \"M\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/clientes/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimientos",
+			"item": [
+				{
+					"name": "Movimiento-Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jose Lema\",\r\n    \"genero\":\"M\",\r\n    \"edad\":\"35\",\r\n    \"documento\":\"40429767\",\r\n    \"direccion\":\"Otavalo sn y principal\",\r\n    \"telefono\":\"098254785\",\r\n    \"contrasena\":\"1234\",\r\n    \"estado\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Movimiento-Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/movimientos"
+					},
+					"response": []
+				},
+				{
+					"name": "Movimiento-Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/movimientos/36"
+					},
+					"response": []
+				},
+				{
+					"name": "Movimiento-Put",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

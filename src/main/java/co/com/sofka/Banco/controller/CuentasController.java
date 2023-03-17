@@ -31,11 +31,11 @@ public class CuentasController {
 
     @PostMapping
     public ResponseEntity<Cuenta> guardarCuenta(@RequestBody Cuenta cuenta){
-
+        System.out.println(cuenta);
         return ResponseEntity.ok().body(service.guardarCuenta(cuenta));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Cuenta> actualizarCuenta(@RequestBody Cuenta cuenta, @PathVariable Long id){
         Cuenta cuenta1 = service.modificarCuenta(cuenta, id);
 

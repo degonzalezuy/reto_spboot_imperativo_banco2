@@ -1,6 +1,7 @@
 package co.com.sofka.Banco.services;
 
 import co.com.sofka.Banco.model.Cliente;
+import co.com.sofka.Banco.model.Cuenta;
 import co.com.sofka.Banco.repository.ClienteRepository;
 import co.com.sofka.Banco.services.interfaces.IClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,18 @@ public class ClienteService implements IClienteService.ICliente {
     }
 
     @Override
-    public Cliente modificarCliente(Cliente cliente, Long id) {
-        return null;
+    public Optional<Cliente> modificarCliente(Cliente cliente, Long id) {
+        return clienteRepository.findById(id).map(cliente1 -> {
+            cliente1.setEstado(cliente.getEstado());
+            cliente1.setContrasena(cliente.getContrasena());
+            cliente1.setEdad(cliente.getEdad());
+            cliente1.setDireccion(cliente.getDireccion());
+            cliente1.setDocumento(cliente.getDocumento());
+            cliente1.setGenero(cliente.getGenero());
+            cliente1.setTelefono(cliente.getTelefono());
+            cliente1.setNombre(cliente.getNombre());
+
+            return clienteRepository.save(cliente1);
+        });
     }
 }

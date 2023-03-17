@@ -9,5 +9,5 @@ public interface ICuentaService {
     public Optional<Cuenta> buscarCuentaPorId(Long id);
     public Cuenta guardarCuenta(Cuenta cuenta);
     public Cuenta eliminarCuenta(Long id);
-    public Cuenta modificarCuenta(Cuenta cuenta, Long id);
+    public Optional<Cuenta> modificarCuenta(Cuenta cuenta, Long id);
 }

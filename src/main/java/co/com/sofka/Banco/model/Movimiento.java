@@ -16,8 +16,12 @@ public class Movimiento {
     @ManyToOne
     private Cuenta cuenta;
 
+    public Movimiento(){
+        super();
+    }
 
     public Movimiento(Long idMovimiento, Date fecha, String tipoMovimiento, float valor, float saldo, Cuenta cuenta) {
+        super();
         this.idMovimiento = idMovimiento;
         this.fecha = fecha;
         this.tipoMovimiento = tipoMovimiento;

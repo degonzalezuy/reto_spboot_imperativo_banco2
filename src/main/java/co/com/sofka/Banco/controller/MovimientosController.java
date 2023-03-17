@@ -19,7 +19,7 @@ public class MovimientosController {
     private MovimientoService service;
 
     @GetMapping
-    public ResponseEntity<List<Movimiento>> getCuentas(){
+    public ResponseEntity<List<Movimiento>> getMovimientos(){
         return ResponseEntity.ok().body(service.buscarMovimientos());
     }
 

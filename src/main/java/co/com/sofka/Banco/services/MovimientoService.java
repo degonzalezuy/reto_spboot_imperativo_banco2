@@ -18,7 +18,8 @@ public class MovimientoService implements IMovimientoService {
 
     @Autowired
     private MovimientoRepository movimientoRepository;
-
+    @Autowired
+    private CuentaService cuentaService;
 
     public List<Movimiento> buscarMovimientos() {
         return movimientoRepository.findAll();
@@ -30,13 +31,25 @@ public class MovimientoService implements IMovimientoService {
     }
     @Override
     public Movimiento guardarMovimiento(Movimiento movimiento) {
-        float saldo = getSaldoCuenta(movimiento.getCuenta().getId());
+        //float saldo = getSaldoCuenta(movimiento.getCuenta().getId());
+        Optional<Cuenta> cuenta = cuentaService.buscarCuentaPorId(movimiento.getCuenta().getId());
+        float saldo = cuenta.get().getSaldo();
+
         if(movimiento.getValor()>0){
           saldo = sumarMovimiento(saldo, movimiento.getValor());
         }else{
             saldo = restarMovimiento(saldo, movimiento.getValor());
         }
         movimiento.setSaldo(saldo);
+        Cuenta cuentaActualizada = new Cuenta();
+        cuentaActualizada.setId(cuenta.get().getId());
+        cuentaActualizada.setNumero(cuenta.get().getNumero());
+        cuentaActualizada.setSaldo(saldo);
+        cuentaActualizada.setTipoCuenta(cuenta.get().getTipoCuenta());
+        cuentaActualizada.setEstado(cuenta.get().getEstado());
+        cuentaActualizada.setCliente(cuenta.get().getCliente());
+
+        cuentaService.modificarCuenta(cuentaActualizada, cuentaActualizada.getId());
         return movimientoRepository.save(movimiento);
     }
 
@@ -59,10 +72,9 @@ public class MovimientoService implements IMovimientoService {
         return null;
     }
 
-    @Autowired
-    private CuentaService cuentaService;
-    public float getSaldoCuenta(Long idCuenta){
+
+    /*public float getSaldoCuenta(Long idCuenta){
         Optional<Cuenta> cuenta = cuentaService.buscarCuentaPorId(idCuenta);
         return cuenta.get().getSaldo();
-    }
+    }*/
 }

@@ -42,8 +42,17 @@ public class CuentaService implements ICuentaService {
     }
 
     @Override
-    public Cuenta modificarCuenta(Cuenta cuenta, Long id) {
-        return null;
+    public Optional<Cuenta> modificarCuenta(Cuenta cuenta, Long id) {
+        return cuentaRepository.findById(id).map(cuenta1 -> {
+            cuenta1.setNumero(cuenta.getNumero());
+            cuenta1.setSaldo(cuenta.getSaldo());
+            cuenta1.setTipoCuenta(cuenta.getTipoCuenta());
+            cuenta1.setEstado(cuenta.getEstado());
+            cuenta1.setCliente(cuenta.getCliente());
+
+            return cuentaRepository.save(cuenta1);
+        });
+
     }
 
 }

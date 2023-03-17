@@ -1,6 +1,7 @@
 package co.com.sofka.Banco.controller;
 
 import co.com.sofka.Banco.model.Cliente;
+import co.com.sofka.Banco.model.Cuenta;
 import co.com.sofka.Banco.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +34,17 @@ public class ClientesController {
         return ResponseEntity.ok().body(service.guardarCliente(cliente));
     }
 
-    @PutMapping
-    public ResponseEntity<Cliente> actualizarCliente(@RequestBody Cliente cliente, @PathVariable Long id){
-        Cliente cliente1 = service.modificarCliente(cliente, id);
+    @PutMapping("/{id}")
+    public ResponseEntity<Optional<Cliente>> actualizarCliente(@RequestBody Cliente cliente, @PathVariable Long id){
+        Optional<Cliente> cliente1 = service.modificarCliente(cliente, id);
 
         return ResponseEntity.ok().body(cliente1);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarCliente(@PathVariable Long id){
+        Cliente cliente = service.eliminarCliente(id);
+
+        return ResponseEntity.ok().body("Cliente eliminado");
     }
 }

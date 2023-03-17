@@ -9,7 +9,7 @@ public interface IClienteService {
         public Optional<Cliente> buscarClientePorId(Long id);
         public Cliente guardarCliente(Cliente cliente);
         public Cliente eliminarCliente(Long id);
-        public Cliente modificarCliente(Cliente cliente, Long id);
+        public Optional<Cliente> modificarCliente(Cliente cliente, Long id);
 
     }
 }

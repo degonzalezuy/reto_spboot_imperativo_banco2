@@ -36,8 +36,8 @@ public class CuentasController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cuenta> actualizarCuenta(@RequestBody Cuenta cuenta, @PathVariable Long id){
-        Cuenta cuenta1 = service.modificarCuenta(cuenta, id);
+    public ResponseEntity<Optional<Cuenta>> actualizarCuenta(@RequestBody Cuenta cuenta, @PathVariable Long id){
+        Optional<Cuenta> cuenta1 = service.modificarCuenta(cuenta, id);
 
         return ResponseEntity.ok().body(cuenta1);
     }

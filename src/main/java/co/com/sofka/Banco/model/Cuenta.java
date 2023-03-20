@@ -20,6 +20,7 @@ public class Cuenta {
     }
 
     public Cuenta(Long idCuenta, Long numero, String tipoCuenta, float saldo, Boolean estado, Cliente cliente) {
+        super();
         this.idCuenta = idCuenta;
         this.numero = numero;
         this.tipoCuenta = tipoCuenta;

@@ -21,6 +21,7 @@ public class Cliente{
     }
 
     public Cliente(Long idCliente, String nombre, int edad, int documento, String direccion, String telefono, String contrasena, boolean estado, String genero) {
+        super();
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.edad = edad;

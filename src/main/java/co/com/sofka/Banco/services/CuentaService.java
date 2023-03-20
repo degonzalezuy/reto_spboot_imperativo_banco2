@@ -37,8 +37,9 @@ public class CuentaService implements ICuentaService {
 
     @Override
     public Cuenta eliminarCuenta(Long id) {
-        cuentaRepository.deleteById(id);
-        return null;
+        Optional<Cuenta> cuenta = this.buscarCuentaPorId(id);
+        cuentaRepository.delete(cuenta.get());
+        return cuenta.get();
     }
 
     @Override

@@ -1,12 +1,11 @@
 package co.com.sofka.Banco.services;
 
 import co.com.sofka.Banco.model.Cliente;
-import co.com.sofka.Banco.model.Cuenta;
 import co.com.sofka.Banco.repository.ClienteRepository;
 import co.com.sofka.Banco.services.interfaces.IClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -35,9 +34,10 @@ public class ClienteService implements IClienteService.ICliente {
     }
 
     @Override
-    public void eliminarCliente(Long id) {
-        clienteRepository.deleteById(id);
-
+    public Cliente eliminarCliente(Long id) {
+        Optional<Cliente> cliente = this.buscarClientePorId(id);
+        clienteRepository.delete(cliente.get());
+        return cliente.get();
     }
 
     @Override

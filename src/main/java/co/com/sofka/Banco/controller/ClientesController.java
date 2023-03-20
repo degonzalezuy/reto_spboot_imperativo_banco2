@@ -42,9 +42,8 @@ public class ClientesController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarCliente(@PathVariable Long id){
-        service.eliminarCliente(id);
+    public ResponseEntity<Cliente> eliminarCliente(@PathVariable Long id){
 
-        return ResponseEntity.ok().body("Cliente eliminado");
+        return ResponseEntity.ok().body(service.eliminarCliente(id));
     }
 }

@@ -5,13 +5,15 @@ import jakarta.persistence.*;
 @Entity
 public class Cuenta {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="idCuenta")
     private Long idCuenta;
     private Long numero;
     private String tipoCuenta;
     private float saldo;
     private Boolean estado;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="clienteId", referencedColumnName ="idCliente")
     private Cliente cliente;
 
     public Cuenta() {
@@ -23,7 +25,6 @@ public class Cuenta {
         this.tipoCuenta = tipoCuenta;
         this.saldo = saldo;
         this.estado = estado;
-
         this.cliente = cliente;
     }
 

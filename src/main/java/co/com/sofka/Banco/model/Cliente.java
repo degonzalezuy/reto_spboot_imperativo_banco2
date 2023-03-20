@@ -17,6 +17,30 @@ public class Cliente{
     private boolean estado;
     private String genero;
 
+    public Cliente() {
+    }
+
+    public Cliente(Long idCliente, String nombre, int edad, int documento, String direccion, String telefono, String contrasena, boolean estado, String genero) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.documento = documento;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.contrasena = contrasena;
+        this.estado = estado;
+        this.genero = genero;
+    }
+    public Cliente( String nombre, int edad, int documento, String direccion, String telefono, String contrasena, boolean estado, String genero) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.documento = documento;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.contrasena = contrasena;
+        this.estado = estado;
+        this.genero = genero;
+    }
 
     public Long getIdCliente() {
         return idCliente;

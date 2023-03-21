@@ -1,0 +1,12 @@
+Para crear el empaquetado del proyecto.
+mvn clean package -DskipTests
+
+------------
+Crear Dockerfile con el contenido del archivo que se encuentra en la raíz del proyecto
+------------
+
+Ejecutar comando para crear imagen.
+podman build -t Banco .
+
+Para ejecutar nuestra aplicación
+podman run localhost/banco:latest -dt -p 8000:8080

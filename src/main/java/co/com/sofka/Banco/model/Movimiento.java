@@ -1,7 +1,8 @@
 package co.com.sofka.Banco.model;
 
-import jakarta.persistence.*;
 
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity

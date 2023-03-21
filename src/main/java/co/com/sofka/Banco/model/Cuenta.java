@@ -1,6 +1,7 @@
 package co.com.sofka.Banco.model;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 public class Cuenta {

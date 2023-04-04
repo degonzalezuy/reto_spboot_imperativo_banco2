@@ -1,10 +1,10 @@
 package co.com.sofka.Banco.services;
 
-import co.com.sofka.Banco.model.Cliente;
+
+import co.com.sofka.Banco.dto.CuentaDto;
+import co.com.sofka.Banco.mapper.CuentasMapper;
 import co.com.sofka.Banco.model.Cuenta;
-import co.com.sofka.Banco.repository.ClienteRepository;
 import co.com.sofka.Banco.repository.CuentaRepository;
-import co.com.sofka.Banco.services.interfaces.IClienteService;
 import co.com.sofka.Banco.services.interfaces.ICuentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,13 @@ public class CuentaService implements ICuentaService {
     private CuentaRepository cuentaRepository;
 
 
-    public List<Cuenta> buscarCuentas() {
-        return cuentaRepository.findAll();
+    @Override
+    public List<CuentaDto> buscarCuentas() {
+        return CuentasMapper.cuentasToCuentasDto(cuentaRepository.findAll());
     }
 
-    public Optional<Cuenta> buscarCuentaPorId(Long id) {
-        return cuentaRepository.findById(id);
+    public Optional<CuentaDto> buscarCuentaPorId(Long id) {
+        return  cuentaRepository.findById(id).map(CuentasMapper::cuentaToCuentaDto);
 
     }
     @Override
@@ -36,10 +37,8 @@ public class CuentaService implements ICuentaService {
     }
 
     @Override
-    public Cuenta eliminarCuenta(Long id) {
-        Optional<Cuenta> cuenta = this.buscarCuentaPorId(id);
-        cuentaRepository.delete(cuenta.get());
-        return cuenta.get();
+    public void eliminarCuenta(Long id) {
+        cuentaRepository.deleteById(id);
     }
 
     @Override

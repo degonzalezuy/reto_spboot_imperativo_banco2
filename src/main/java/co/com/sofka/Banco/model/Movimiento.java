@@ -2,10 +2,20 @@ package co.com.sofka.Banco.model;
 
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="Movimientos")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Movimiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +27,7 @@ public class Movimiento {
     @ManyToOne
     private Cuenta cuenta;
 
-    public Movimiento(){
+    /*public Movimiento(){
         super();
     }
 
@@ -77,5 +87,5 @@ public class Movimiento {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
-    }
+    }*/
 }

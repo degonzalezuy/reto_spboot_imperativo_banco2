@@ -1,9 +1,10 @@
 package co.com.sofka.Banco.controller;
 
-import co.com.sofka.Banco.model.Cliente;
+
+import co.com.sofka.Banco.dto.CuentaDto;
 import co.com.sofka.Banco.model.Cuenta;
-import co.com.sofka.Banco.services.ClienteService;
-import co.com.sofka.Banco.services.CuentaService;
+import co.com.sofka.Banco.services.interfaces.IClienteService;
+import co.com.sofka.Banco.services.interfaces.ICuentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +17,16 @@ import java.util.Optional;
 public class CuentasController {
 
     @Autowired
-    private CuentaService service;
+    private ICuentaService service;
 
     @GetMapping
-    public ResponseEntity<List<Cuenta>> getCuentas(){
+    public ResponseEntity<List<CuentaDto>> getCuentas(){
         return ResponseEntity.ok().body(service.buscarCuentas());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Cuenta>>getClientePorId(@PathVariable(value="id") Long cuentaId) {
-        Optional<Cuenta> cuenta = service.buscarCuentaPorId(cuentaId);
+    public ResponseEntity<Optional<CuentaDto>>getClientePorId(@PathVariable(value="id") Long cuentaId) {
+        Optional<CuentaDto> cuenta = service.buscarCuentaPorId(cuentaId);
         return ResponseEntity.ok().body(cuenta);
     }
 
@@ -43,8 +44,9 @@ public class CuentasController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Cuenta> eliminarCuenta(@PathVariable Long id){
-        return ResponseEntity.ok().body(service.eliminarCuenta(id));
+    public ResponseEntity<Void> eliminarCuenta(@PathVariable Long id){
+        service.eliminarCuenta(id);
+        return ResponseEntity.ok().build();
     }
 
 }

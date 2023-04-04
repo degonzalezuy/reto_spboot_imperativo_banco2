@@ -1,12 +1,19 @@
 package co.com.sofka.Banco.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name="Clientes")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Cliente{
 
     @Id
@@ -21,7 +28,7 @@ public class Cliente{
     private boolean estado;
     private String genero;
 
-    public Cliente() {
+ /*   public Cliente() {
     }
 
     public Cliente(Long idCliente, String nombre, int edad, int documento, String direccion, String telefono, String contrasena, boolean estado, String genero) {
@@ -121,5 +128,5 @@ public class Cliente{
 
     public boolean isEstado() {
         return estado;
-    }
+    }*/
 }
